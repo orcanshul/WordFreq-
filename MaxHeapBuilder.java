@@ -15,8 +15,17 @@ public class MaxHeapBuilder {
             new WordFreq("visit the store", 700)
         };
 
-        System.out.println("Original array:");
+        buildMaxHeap(arr);
+
+        System.out.println("\nMax-Heap array:");
         printArray(arr);
+    }
+
+    static void buildMaxHeap(WordFreq[] arr) {
+        int n = arr.length;
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            maxHeapify(arr, n, i);
+        }
     }
 
     static void maxHeapify(WordFreq[] arr, int n, int i) {
