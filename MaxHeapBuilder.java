@@ -19,6 +19,28 @@ public class MaxHeapBuilder {
         printArray(arr);
     }
 
+    static void maxHeapify(WordFreq[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && arr[left].frequency > arr[largest].frequency) {
+            largest = left;
+        }
+
+        if (right < n && arr[right].frequency > arr[largest].frequency) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            WordFreq temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+
+            maxHeapify(arr, n, largest);
+        }
+    }
+
     static void printArray(WordFreq[] arr) {
         for (WordFreq wf : arr) {
             System.out.println(wf);
